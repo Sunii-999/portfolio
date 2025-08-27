@@ -24,8 +24,9 @@ const Header = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="font-bold text-xl text-google-gray-900">
-            Sunii
+          <Link to="/" className="font-bold text-xl text-google-gray-900 flex items-center space-x-2">
+            <img src="/img/mylogo.svg" alt="Sunii Logo" className="h-8 w-8" /> {/* Adjust height/width as needed */}
+            <span>Sunii</span>
           </Link>
 
           {/* Desktop Navigation */}

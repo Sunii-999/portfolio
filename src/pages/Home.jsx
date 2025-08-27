@@ -45,9 +45,11 @@ const Home = () => {
                 View Projects
                 <ArrowRight className="ml-2" size={20} />
               </Button>
-              <Button variant="secondary" size="lg">
-                Download CV
-              </Button>
+              <a href="/stijnwalravens-resume.pdf" download="stijnwalravens-resume.pdf">
+  <Button variant="secondary" size="lg">
+    Download CV
+  </Button>
+</a>
             </motion.div>
 
             {/* Social Links */}
