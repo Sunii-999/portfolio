@@ -4,18 +4,22 @@ import { ExternalLink, Github, Filter } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { projects, projectCategories } from '../data/projects';
-import { Link } from 'react-router-dom'; // <-- Add this!
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const filteredProjects = useMemo(() => {
-    if (selectedCategory === 'All') return projects;
-    return projects.filter(project => project.category === selectedCategory);
+    // 1. Filter the projects based on the selected category
+    const categoryFiltered = selectedCategory === 'All' 
+      ? projects 
+      : projects.filter(project => project.category === selectedCategory);
+
+    return categoryFiltered.slice().sort((a, b) => b.id - a.id);
     
   }, [selectedCategory]);
-  console.log(filteredProjects);
+  // console.log(filteredProjects); // Removed console.log
 
   return (
     <div className="min-h-screen pt-16">
@@ -115,7 +119,7 @@ const Projects = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  <Link to={`/project/${project.slug}`}>
+                  <Link to={`/project/${project.slug}`} className="block h-full"> {/* Ensure Link is block-level for the whole card */}
                   <Card className="h-full group">
                     {/* Project Image */}
                     <div className="aspect-video bg-google-gray-200 rounded-lg mb-4 overflow-hidden">
@@ -159,7 +163,8 @@ const Projects = () => {
                         ))}
                       </div>
 
-                      {/* Project Links */}
+                      {/* Project Links - NOTE: You should consider moving these links outside of the main Link to the detail page 
+                          if you want users to be able to click Live Demo/Code directly without going to the detail page. */}
                       <div className="flex gap-2 mt-auto">
                         {project.liveUrl && (
                           <a
@@ -167,6 +172,7 @@ const Projects = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1"
+                            onClick={(e) => e.stopPropagation()} // Prevents the card's Link from triggering
                           >
                             <Button size="sm" className="w-full">
                               <ExternalLink size={14} className="mr-1" />
@@ -180,6 +186,7 @@ const Projects = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1"
+                            onClick={(e) => e.stopPropagation()} // Prevents the card's Link from triggering
                           >
                             <Button variant="secondary" size="sm" className="w-full">
                               <Github size={14} className="mr-1" />
