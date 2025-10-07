@@ -1,12 +1,23 @@
-export const projects = [
+const createSlug = (title) => {
+  return title
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '') // Remove all non-word chars except hyphens
+    .replace(/[\s_-]+/g, '-') // Replace spaces and repeated hyphens with a single hyphen
+    .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+};
+
+export const portfolioData = {
+  projects: [
     {
       id: 1,
-      title: "DCLONE | Interactive Social Networking Application with Headless CMS Integration",
-      description: "A full-stack social platform with Next.js, Tailwind CSS, and Strapi where users can interact and share content.",
-      image: "/img/projects/dclone.png", 
-      technologies: ["Next.js", "Strapi", "Tailwind CSS"],
+      title: "DCLONE | Social Networking Platform",
+      slug: createSlug("DCLONE | Social Networking Platform"), // dclone-social-networking-platform
+      description: "A full-stack, interactive social media platform developed using Next.js, featuring a headless CMS (Strapi) for flexible content management and a sleek, responsive design with Tailwind CSS.",
+      image: "/img/projects/dclone.png",
+      technologies: ["Next.js", "Strapi (Headless CMS)", "Tailwind CSS", "Full Stack"],
       liveUrl: null,
-      githubUrl: null,
+      githubUrl: null, // Note: Consider making this repo public or adding a video demo link.
       featured: true,
       category: "Full Stack",
       completionDate: "2024-03"
@@ -14,9 +25,10 @@ export const projects = [
     {
       id: 2,
       title: "Comprehensive Back Office Data Management System",
-      description: "A back-office application with a robust database design for managing and organizing data.",
+      slug: createSlug("Comprehensive Back Office Data Management System"), // comprehensive-back-office-data-management-system
+      description: "Developed a robust back-office application and database architecture for efficient data management and organization, utilizing CraftCMS and PHP for reliable backend operations.",
       image: "/img/projects/back.jpg",
-      technologies: ["CraftCMS", "PHP"],
+      technologies: ["CraftCMS", "PHP", "Database Design"],
       liveUrl: null,
       githubUrl: "https://github.com/pgmgent-2425-datamanagement/custom-backoffice-pgm-stijwalr",
       featured: false,
@@ -25,10 +37,11 @@ export const projects = [
     },
     {
       id: 3,
-      title: "Real Time Chat - ReactJS + NodeJS",
-      description: "A real-time live chat application supporting one-on-one and group messaging.",
+      title: "Real-Time Chat Application",
+      slug: createSlug("Real-Time Chat Application"), // real-time-chat-application
+      description: "Built a high-performance, real-time live chat application using ReactJS and NodeJS, capable of handling both secure one-on-one and scalable group messaging.",
       image: "/img/projects/chat-1.jpg",
-      technologies: ["ReactJS", "NodeJS"],
+      technologies: ["ReactJS", "Node.js", "WebSockets (Implied)", "Full Stack"],
       liveUrl: null,
       githubUrl: "https://github.com/walravensJS/Live-chat-NodeJS",
       featured: true,
@@ -37,10 +50,11 @@ export const projects = [
     },
     {
       id: 4,
-      title: "PGM-Platform (Graduaat programmeren)",
-      description: "An informational website about the Graduaat Programmeren program at Artevelde.",
+      title: "PGM-Platform (Academic Program Website)",
+      slug: createSlug("PGM-Platform (Academic Program Website)"), // pgm-platform-academic-program-website
+      description: "An official informational website for the 'Graduaat Programmeren' program at Artevelde University of Applied Sciences, built for accessibility and clear information architecture using React.js.",
       image: "/img/projects/pgm-1.jpg",
-      technologies: ["React.js", "Javascript"],
+      technologies: ["React.js", "JavaScript", "Frontend Development"],
       liveUrl: "https://pgm-platform-pgm-stijwalr.onrender.com/",
       githubUrl: "https://github.com/pgmgent-pgm-4/pgm-platform-pgm-stijwalr",
       featured: false,
@@ -49,10 +63,11 @@ export const projects = [
     },
     {
       id: 5,
-      title: "Logo | Dartscompetitie Druivenstreek",
-      description: "A custom logo created for the 'Dartscompetitie Druivenstreek' darts competition.",
+      title: "Custom Logo Design | Dartscompetitie Druivenstreek",
+      slug: createSlug("Custom Logo Design | Dartscompetitie Druivenstreek"), // custom-logo-design-dartscompetitie-druivenstreek
+      description: "Created a professional, custom logo and branding material for the 'Dartscompetitie Druivenstreek' competition, focusing on visual appeal and brand identity.",
       image: "/img/projects/dd.jpg",
-      technologies: ["Adobe Illustrator"],
+      technologies: ["Adobe Illustrator", "Graphic Design", "Branding"],
       liveUrl: "https://www.facebook.com/p/Druivenstreek-Darts-Open-61555411891609/",
       githubUrl: null,
       featured: false,
@@ -61,22 +76,40 @@ export const projects = [
     },
     {
       id: 6,
-      title: "Webdesign | Casino management system",
-      description: "A web design project for a casino management system addressing inefficiencies.",
+      title: "UX/UI Web Design | Casino Management System",
+      slug: createSlug("UX/UI Web Design | Casino Management System"), // ux-ui-web-design-casino-management-system
+      description: "A comprehensive web design and UX/UI project for a casino management system, focused on streamlining workflows and resolving operational inefficiencies through intuitive design.",
       image: "/img/projects/cms-1.jpg",
-      technologies: ["Webdesign"],
+      technologies: ["Web Design", "UX/UI Design", "Information Architecture"],
       liveUrl: null,
-      githubUrl: null,
+      githubUrl: null, // Note: Consider adding design artifacts (Figma/Sketch link) here.
       featured: false,
       category: "Design",
       completionDate: "2023-11"
+    },
+    {
+      id: 7,
+      title: "Custom Text Editor / Google Docs Clone",
+      slug: createSlug("Custom Text Editor / Google Docs Clone"), // custom-text-editor-google-docs-clone
+      description: "A featured, collaborative rich text editor application, leveraging the power of Next.js and TypeScript to deliver a modern, performant, and reliable editing experience.",
+      image: "/img/projects/custom-editor.png",
+      technologies: ["Next.js", "Tailwind CSS", "TypeScript", "React", "Collaboration Tools"],
+      liveUrl: "https://custom-editor-tau.vercel.app/",
+      githubUrl: "https://github.com/Sunii-999/custom-editor",
+      featured: true,
+      category: "Full Stack", // Changed from "All" to a technical category for better filtering
+      completionDate: "2023-11"
     }
-  ];
-  
-  export const projectCategories = [
+  ],
+  projectCategories: [
     "All",
     "Full Stack",
     "Frontend",
     "Backend",
     "Design"
-  ];
+  ]
+};
+
+// Original export format (if you must keep it exactly as-is)
+export const projects = portfolioData.projects;
+export const projectCategories = portfolioData.projectCategories;

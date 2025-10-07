@@ -4,6 +4,7 @@ import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import { profile } from '../data/profile';
 import { projects } from '../data/projects';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const featuredProjects = projects.filter(p => p.featured).slice(0, 3);
@@ -41,15 +42,18 @@ const Home = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
             >
-              <Button size="lg" className="min-w-[140px]">
-                View Projects
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
+              {/* Added Link to /projects for the main button */}
+              <Link to="/projects">
+                <Button size="lg" className="min-w-[140px]">
+                  View Projects
+                  <ArrowRight className="ml-2" size={20} />
+                </Button>
+              </Link>
               <a href="/stijnwalravens-resume.pdf" download="stijnwalravens-resume.pdf">
-  <Button variant="secondary" size="lg">
-    Download CV
-  </Button>
-</a>
+                <Button variant="secondary" size="lg">
+                  Download CV
+                </Button>
+              </a>
             </motion.div>
 
             {/* Social Links */}
@@ -98,6 +102,7 @@ const Home = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* FIX: Link must wrap the project item and use the project.slug */}
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -105,31 +110,33 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
               >
-                <Card className="h-full">
-                  <div className="aspect-video bg-google-gray-200 rounded-lg mb-4">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-                  <h3 className="text-lg font-medium text-google-gray-900 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-google-gray-600 mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 3).map(tech => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-google-blue/10 text-google-blue text-xs rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </Card>
+                <Link to={`/project/${project.slug}`} className="block h-full hover:shadow-lg transition-shadow duration-300">
+                  <Card className="h-full">
+                    <div className="aspect-video bg-google-gray-200 rounded-lg mb-4">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </div>
+                    <h3 className="text-lg font-medium text-google-gray-900 mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-google-gray-600 mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.slice(0, 3).map(tech => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 bg-google-blue/10 text-google-blue text-xs rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -140,11 +147,12 @@ const Home = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-center mt-12"
           >
-            <a href="/projects">
-            <Button variant="secondary" size="lg">
-              View All Projects
-              <ArrowRight className="ml-2" size={20} />
-            </Button></a>
+            <Link to="/projects">
+              <Button variant="secondary" size="lg">
+                View All Projects
+                <ArrowRight className="ml-2" size={20} />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>

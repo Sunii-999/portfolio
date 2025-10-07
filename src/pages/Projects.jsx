@@ -4,6 +4,7 @@ import { ExternalLink, Github, Filter } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { projects, projectCategories } from '../data/projects';
+import { Link } from 'react-router-dom'; // <-- Add this!
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -12,7 +13,9 @@ const Projects = () => {
   const filteredProjects = useMemo(() => {
     if (selectedCategory === 'All') return projects;
     return projects.filter(project => project.category === selectedCategory);
+    
   }, [selectedCategory]);
+  console.log(filteredProjects);
 
   return (
     <div className="min-h-screen pt-16">
@@ -112,6 +115,7 @@ const Projects = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
+                  <Link to={`/project/${project.slug}`}>
                   <Card className="h-full group">
                     {/* Project Image */}
                     <div className="aspect-video bg-google-gray-200 rounded-lg mb-4 overflow-hidden">
@@ -186,6 +190,7 @@ const Projects = () => {
                       </div>
                     </div>
                   </Card>
+                  </Link>
                 </motion.div>
               ))}
             </AnimatePresence>
