@@ -1,12 +1,6 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
-
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -14,30 +8,35 @@ const Footer = () => {
   ];
 
   return (
+    <footer className="w-full bg-white/80 backdrop-blur-md border-t border-google-gray-200 shadow-inner">
+      <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
+        {/* Logo */}
+        <Link
+          to="/"
+          className="flex items-center space-x-2 font-bold text-xl text-google-gray-900"
+        >
+          <img src="/img/mylogo.svg" alt="Sunii Logo" className="h-8 w-8" />
+          <span>Sunii</span>
+        </Link>
 
-    <>
-        <div className='w-full h- bg-white/80 backdrop-blur-md z-50 border-b border-google-gray-200'>
-            <div className='flex justify-around items-center'>
-                <div>
-                    <Link to="/" className="font-bold text-xl text-google-gray-900 flex items-center space-x-2">
-                        <img src="/img/mylogo.svg" alt="Sunii Logo" className="h-8 w-8" /> {/* Adjust height/width as needed */}
-                        <span>Sunii</span>
-                    </Link>
-                </div>
-                <div>
-                {navItems.map((item) => (
+        {/* Navigation */}
+        <ul className="flex space-x-6">
+          {navItems.map((item) => (
+            <li key={item.name}>
               <Link
-                key={item.name}
                 to={item.path}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200`}
+                className="text-google-gray-700 hover:text-google-blue transition-colors duration-200 font-medium"
               >
                 {item.name}
               </Link>
-            ))}
-                </div>
-            </div>
-        </div>
-    </>
+            </li>
+          ))}
+        </ul>
+
+        {/* Optional copyright */}
+        <p className="text-sm text-google-gray-500">&copy; {new Date().getFullYear()} Sunii. All rights reserved.</p>
+      </div>
+    </footer>
   );
 };
 
