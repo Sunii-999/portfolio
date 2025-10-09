@@ -187,7 +187,7 @@ const About = () => {
             {/* The image from the resume is in a protected path and cannot be displayed here. 
                 A placeholder is used instead. */}
             <img 
-              src="https://media.licdn.com/dms/image/v2/D4E03AQGK4JmSwU-ySw/profile-displayphoto-shrink_800_800/B4EZdBhlDEHcAc-/0/1749151011522?e=1759363200&v=beta&t=TiW6RN_nNJmgfkLbiZkxqWnXG78DlSb19J_QUEVBNig" 
+              src="https://media.licdn.com/dms/image/v2/D4E03AQGK4JmSwU-ySw/profile-displayphoto-shrink_800_800/B4EZdBhlDEHcAc-/0/1749151011522?e=1762992000&v=beta&t=NIZLm6dqE5XyQCUy4sAzuZKLr94weObR6QRVT69uH2E" 
               alt="Profile Picture" 
               className="w-full h-full object-cover" 
             />
