@@ -1,24 +1,23 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Code, ArrowRight } from 'lucide-react';
 
-// The following components and data are assumed to exist based on the user's previous context.
-// In a real project, these would need to be in their respective files.
+// Card component
 const Card = ({ children, className }) => (
   <div className={`rounded-xl bg-white google-shadow p-6 ${className}`}>
     {children}
   </div>
 );
 
+// Custom button (if needed)
 const Button = ({ children, variant = 'primary', size = 'md', onClick, className = '', ...props }) => {
   const baseClasses = "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
-  
   const variants = {
     primary: "bg-google-blue text-white hover:bg-blue-600 focus:ring-google-blue google-shadow",
     secondary: "bg-white text-google-gray-700 border border-google-gray-300 hover:bg-google-gray-50 focus:ring-google-gray-500 google-shadow",
     ghost: "text-google-gray-700 hover:bg-google-gray-100 focus:ring-google-gray-500",
   };
-
   const sizes = {
     sm: "px-3 py-2 text-sm",
     md: "px-4 py-2 text-sm",
@@ -38,80 +37,17 @@ const Button = ({ children, variant = 'primary', size = 'md', onClick, className
   );
 };
 
-
-// Data from the user's resume and provided profile object
-const profile = {
-    name: "Sunii",
-    title: "Full Stack Developer | Designer",
-    subtitle: "Building digital experiences with modern web technologies",
-    email: "stijnjoeywalravens.com",
-    location: "Roosdaal, Belgium",
-    bio: "I'm a passionate full-stack developer with expertise in React, Node.js, and modern web technologies. I love creating efficient, scalable solutions and beautiful user experiences.",
-    skills: [
-      {
-        category: "Frontend",
-        items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"]
-      },
-      {
-        category: "Backend",
-        items: ["Node.js", "Python", "PostgreSQL", "MongoDB", "GraphQL"]
-      },
-      {
-        category: "Tools & Others",
-        items: ["Git", "Docker", "AWS", "Figma", "Jest"]
-      }
-    ],
-    experience: [
-      {
-        title: "Senior Frontend Developer",
-        company: "Tech Company",
-        duration: "2022 - Present",
-        description: "Lead frontend development for multiple projects using React and modern web technologies."
-      }
-    ],
-    education: [
-      {
-        degree: "Bachelor of Computer Science",
-        school: "University Name",
-        year: "2020",
-        description: "Focused on software engineering and web development"
-      }
-    ],
-    social: {
-      github: "https://github.com/Sunii-999",
-      linkedin: "https://www.linkedin.com/in/stijn-walravens/",
-      email: "stijnjoeywalravens@gmail.com"
-    }
-  };
-  
-const projects = []; // Placeholder for projects data
-
-// This is the updated profile object that combines the user's input and resume data.
+// Profile data
 const myProfile = {
-  ...profile,
   name: "Stijn Walravens",
   title: "Full-stack Developer | Designer",
-  subtitle: "Full-stack developer with a creative eye and one who is detail oriented, with lots of eagerness to learn.",
+  subtitle: "Full-stack developer with a creative eye and detail-oriented mindset, eager to learn and create.",
   location: "Roosdaal, Belgium",
   email: "stijnjoeywalravens@gmail.com",
-  social: {
-    github: "https://github.com/Sunii-999",
-    linkedin: "https://www.linkedin.com/in/stijn-walravens/",
-    email: "stijnjoeywalravens@gmail.com"
-  },
   skills: [
-    {
-      category: "Programming & Development",
-      items: ["React", "React Native", "Next.js", "PHP", "Javascript", "Typescript", "CSS"]
-    },
-    {
-      category: "Design & Communication",
-      items: ["UI/UX", "Graphic Design", "Communication", "Independent Work"]
-    },
-    {
-      category: "Tools & Others",
-      items: ["Git", "Framer Motion", "Tailwind CSS", "Figma"]
-    }
+    { category: "Programming & Development", items: ["React", "React Native", "Next.js", "PHP", "Javascript", "Typescript", "CSS"] },
+    { category: "Design & Communication", items: ["UI/UX", "Graphic Design", "Communication", "Independent Work"] },
+    { category: "Tools & Others", items: ["Git", "Framer Motion", "Tailwind CSS", "Figma"] },
   ],
   experience: [
     {
@@ -122,29 +58,13 @@ const myProfile = {
     }
   ],
   education: [
-    {
-      degree: "Degree in Programming",
-      school: "Artevelde Hogeschool Gent",
-      year: "2025",
-      description: "Completed a degree in Programming."
-    },
-    {
-      degree: "Interactive Media",
-      school: "TI Don Bosco Halle",
-      year: "2020",
-      description: "Studied Interactive Media."
-    },
-    {
-      degree: "Graphic Media",
-      school: "TI Don Bosco Halle",
-      year: "2019",
-      description: "Studied Graphic Media."
-    }
+    { degree: "Degree in Programming", school: "Artevelde Hogeschool Gent", year: "2025", description: "Completed a degree in Programming." },
+    { degree: "Interactive Media", school: "TI Don Bosco Halle", year: "2020", description: "Studied Interactive Media." },
+    { degree: "Graphic Media", school: "TI Don Bosco Halle", year: "2019", description: "Studied Graphic Media." }
   ],
 };
 
-
-// Custom Card component for consistency
+// Custom Card component
 const CustomCard = ({ children, title, icon: Icon }) => (
   <Card className="p-6 h-full flex flex-col">
     <div className="flex items-center mb-4">
@@ -155,12 +75,14 @@ const CustomCard = ({ children, title, icon: Icon }) => (
   </Card>
 );
 
+// Section wrapper
 const SectionContainer = ({ children }) => (
   <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     {children}
   </div>
 );
 
+// Section title
 const SectionTitle = ({ children }) => (
   <motion.h2
     initial={{ opacity: 0, y: 20 }}
@@ -172,9 +94,27 @@ const SectionTitle = ({ children }) => (
   </motion.h2>
 );
 
+// About page
 const About = () => {
   return (
     <div className="min-h-screen pt-16 bg-google-gray-50">
+      {/* SEO */}
+      <Helmet>
+        <title>Stijn Walravens | Full-Stack Developer & Designer</title>
+        <meta
+          name="description"
+          content="About Stijn Walravens (Sunii) – Full-Stack Developer & Designer from Belgium. Explore my skills, experience, and education."
+        />
+        <meta property="og:title" content="About Stijn Walravens | Developer & Designer" />
+        <meta
+          property="og:description"
+          content="Learn more about Stijn Walravens (Sunii), a Belgian Full-Stack Developer and Designer, including skills, experience, and education."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://your-portfolio-url.com/about" />
+        <meta property="og:image" content="https://your-portfolio-url.com/img/my-profile-image.png" />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 google-shadow">
         <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
@@ -184,8 +124,6 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="mb-6 w-32 h-32 rounded-full overflow-hidden google-shadow-lg"
           >
-            {/* The image from the resume is in a protected path and cannot be displayed here. 
-                A placeholder is used instead. */}
             <img 
               src="https://media.licdn.com/dms/image/v2/D4E03AQGK4JmSwU-ySw/profile-displayphoto-shrink_800_800/B4EZdBhlDEHcAc-/0/1749151011522?e=1762992000&v=beta&t=NIZLm6dqE5XyQCUy4sAzuZKLr94weObR6QRVT69uH2E" 
               alt="Profile Picture" 
@@ -221,7 +159,7 @@ const About = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Skills Section */}
+        {/* Skills */}
         <SectionContainer>
           <SectionTitle>My Skills</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -246,8 +184,8 @@ const About = () => {
             ))}
           </div>
         </SectionContainer>
-        
-        {/* Experience Section */}
+
+        {/* Experience */}
         <SectionContainer>
           <SectionTitle>Experience</SectionTitle>
           <div className="grid grid-cols-1 gap-8">
@@ -259,22 +197,16 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
               >
                 <CustomCard title={exp.title} icon={Briefcase}>
-                  <p className="text-google-gray-600 font-medium mb-1">
-                    {exp.company}
-                  </p>
-                  <p className="text-google-gray-500 text-sm mb-4">
-                    {exp.duration}
-                  </p>
-                  <p className="text-google-gray-700">
-                    {exp.description}
-                  </p>
+                  <p className="text-google-gray-600 font-medium mb-1">{exp.company}</p>
+                  <p className="text-google-gray-500 text-sm mb-4">{exp.duration}</p>
+                  <p className="text-google-gray-700">{exp.description}</p>
                 </CustomCard>
               </motion.div>
             ))}
           </div>
         </SectionContainer>
 
-        {/* Education Section */}
+        {/* Education */}
         <SectionContainer>
           <SectionTitle>Education</SectionTitle>
           <div className="grid grid-cols-1 gap-8">
@@ -286,15 +218,9 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
               >
                 <CustomCard title={edu.degree} icon={GraduationCap}>
-                  <p className="text-google-gray-600 font-medium mb-1">
-                    {edu.school}
-                  </p>
-                  <p className="text-google-gray-500 text-sm mb-4">
-                    {edu.year}
-                  </p>
-                  <p className="text-google-gray-700">
-                    {edu.description}
-                  </p>
+                  <p className="text-google-gray-600 font-medium mb-1">{edu.school}</p>
+                  <p className="text-google-gray-500 text-sm mb-4">{edu.year}</p>
+                  <p className="text-google-gray-700">{edu.description}</p>
                 </CustomCard>
               </motion.div>
             ))}

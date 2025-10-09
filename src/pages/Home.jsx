@@ -5,14 +5,31 @@ import Card from '../components/ui/Card';
 import { profile } from '../data/profile';
 import { projects } from '../data/projects';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
   const fetchFeaturedProjects = projects.filter(p => p.featured).slice(0, 3);
-
   const featuredProjects = fetchFeaturedProjects.slice().sort((a, b) => b.id - a.id);
 
   return (
     <div className="min-h-screen pt-16">
+      {/* SEO */}
+      <Helmet>
+        <title>Home | Stijn Walravens Portfolio</title>
+        <meta
+          name="description"
+          content="Welcome to Stijn Walravens' portfolio. Explore web development, UI/UX design projects, and more."
+        />
+        <meta property="og:title" content="Home | Stijn Walravens Portfolio" />
+        <meta
+          property="og:description"
+          content="Check out Stijn Walravens' portfolio featuring web development, design, and featured projects."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://your-portfolio-url.com" />
+        <meta property="og:image" content="https://your-portfolio-url.com/img/home-cover.png" />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
@@ -24,9 +41,7 @@ const Home = () => {
               className="text-4xl sm:text-6xl lg:text-7xl font-light text-google-gray-900 mb-6"
             >
               Hello, I'm{' '}
-              <span className="font-medium text-google-blue">
-                {profile.name}
-              </span>
+              <span className="font-medium text-google-blue">{profile.name}</span>
             </motion.h1>
             
             <motion.p
@@ -44,7 +59,6 @@ const Home = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
             >
-              {/* Added Link to /projects for the main button */}
               <Link to="/projects">
                 <Button size="lg" className="min-w-[140px]">
                   View Projects
@@ -58,7 +72,6 @@ const Home = () => {
               </a>
             </motion.div>
 
-            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -104,7 +117,6 @@ const Home = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* FIX: Link must wrap the project item and use the project.slug */}
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.id}

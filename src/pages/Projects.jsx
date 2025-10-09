@@ -5,23 +5,38 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { projects, projectCategories } from '../data/projects';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const filteredProjects = useMemo(() => {
-    // 1. Filter the projects based on the selected category
     const categoryFiltered = selectedCategory === 'All' 
       ? projects 
       : projects.filter(project => project.category === selectedCategory);
-
     return categoryFiltered.slice().sort((a, b) => b.id - a.id);
-    
   }, [selectedCategory]);
 
   return (
     <div className="min-h-screen pt-16">
+      {/* SEO */}
+      <Helmet>
+        <title>Projects | Stijn Walravens Portfolio</title>
+        <meta
+          name="description"
+          content="Explore Stijn Walravens' projects – a collection of web and design work showcasing skills in React, Next.js, PHP, UI/UX, and more."
+        />
+        <meta property="og:title" content="Projects | Stijn Walravens Portfolio" />
+        <meta
+          property="og:description"
+          content="Check out Stijn Walravens' portfolio projects including web development, UI/UX, and design work."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://your-portfolio-url.com/projects" />
+        <meta property="og:image" content="https://your-portfolio-url.com/img/projects-cover.png" />
+      </Helmet>
+
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -118,84 +133,77 @@ const Projects = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  <Link to={`/project/${project.slug}`} className="block h-full"> {/* Ensure Link is block-level for the whole card */}
-                  <Card className="h-full group">
-                    {/* Project Image */}
-                    <div className="aspect-video bg-google-gray-200 rounded-lg mb-4 overflow-hidden">
-                      {project.image ? (
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-google-gray-400">
-                          <span className="text-sm">No image available</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Project Info */}
-                    <div className="flex-1 flex flex-col">
-                      <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-lg font-medium text-google-gray-900 group-hover:text-google-blue transition-colors">
-                          {project.title}
-                        </h3>
-                        <span className="px-2 py-1 bg-google-gray-100 text-google-gray-600 text-xs rounded-full whitespace-nowrap ml-2">
-                          {project.category}
-                        </span>
+                  <Link to={`/project/${project.slug}`} className="block h-full">
+                    <Card className="h-full group">
+                      <div className="aspect-video bg-google-gray-200 rounded-lg mb-4 overflow-hidden">
+                        {project.image ? (
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-google-gray-400">
+                            <span className="text-sm">No image available</span>
+                          </div>
+                        )}
                       </div>
 
-                      <p className="text-google-gray-600 mb-4 flex-1">
-                        {project.description}
-                      </p>
-
-                      {/* Technologies */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.map(tech => (
-                          <span
-                            key={tech}
-                            className="px-2 py-1 bg-google-blue/10 text-google-blue text-xs rounded-full"
-                          >
-                            {tech}
+                      <div className="flex-1 flex flex-col">
+                        <div className="flex items-start justify-between mb-2">
+                          <h3 className="text-lg font-medium text-google-gray-900 group-hover:text-google-blue transition-colors">
+                            {project.title}
+                          </h3>
+                          <span className="px-2 py-1 bg-google-gray-100 text-google-gray-600 text-xs rounded-full whitespace-nowrap ml-2">
+                            {project.category}
                           </span>
-                        ))}
-                      </div>
+                        </div>
 
-                      {/* Project Links - NOTE: You should consider moving these links outside of the main Link to the detail page 
-                          if you want users to be able to click Live Demo/Code directly without going to the detail page. */}
-                      <div className="flex gap-2 mt-auto">
-                        {project.liveUrl && (
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1"
-                            onClick={(e) => e.stopPropagation()} // Prevents the card's Link from triggering
-                          >
-                            <Button size="sm" className="w-full">
-                              <ExternalLink size={14} className="mr-1" />
-                              Live Demo
-                            </Button>
-                          </a>
-                        )}
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1"
-                            onClick={(e) => e.stopPropagation()} // Prevents the card's Link from triggering
-                          >
-                            <Button variant="secondary" size="sm" className="w-full">
-                              <Github size={14} className="mr-1" />
-                              Code
-                            </Button>
-                          </a>
-                        )}
+                        <p className="text-google-gray-600 mb-4 flex-1">{project.description}</p>
+
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.technologies.map(tech => (
+                            <span
+                              key={tech}
+                              className="px-2 py-1 bg-google-blue/10 text-google-blue text-xs rounded-full"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="flex gap-2 mt-auto">
+                          {project.liveUrl && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Button size="sm" className="w-full">
+                                <ExternalLink size={14} className="mr-1" />
+                                Live Demo
+                              </Button>
+                            </a>
+                          )}
+                          {project.githubUrl && (
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Button variant="secondary" size="sm" className="w-full">
+                                <Github size={14} className="mr-1" />
+                                Code
+                              </Button>
+                            </a>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </Card>
+                    </Card>
                   </Link>
                 </motion.div>
               ))}
