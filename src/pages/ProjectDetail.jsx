@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
@@ -6,10 +6,25 @@ import Button from '../components/ui/Button';
 // Assuming 'projects' is the same array you imported in Projects.jsx
 import { projects } from '../data/projects'; 
 
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
+
 const ProjectDetail = () => {
   const { slug } = useParams();
 
   const project = projects.find(p => p.slug === slug);
+
+  const [readmeContent, setReadmeContent] = useState('');
+
+useEffect(() => {
+  if (project?.readme) {
+    fetch(project.readme)
+      .then(res => res.text())
+      .then(setReadmeContent)
+      .catch(() => setReadmeContent('Could not load README.'));
+  }
+}, [project]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -121,6 +136,14 @@ const ProjectDetail = () => {
                 </div>
               )}
             </motion.div>
+
+            {readmeContent && (
+  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+    {readmeContent}
+  </ReactMarkdown>
+)}
+
+
 
               <motion.div
               initial={{ opacity: 0, y: 20 }}

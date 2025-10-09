@@ -68,18 +68,3 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 | `npm run lint`   | Run ESLint to check code quality |
 | `npx convex dev` | Start Convex backend (local dev) |
 
----
-
-## 📌 Roadmap
-
-* ✅ Core rich text editor
-* ⬜ Real-time collaboration with Convex
-* ⬜ AI-powered summary editor
-* ⬜ Document version history
-* ✅Export to PDF / Markdown
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.

@@ -20,7 +20,8 @@ export const portfolioData = {
       githubUrl: null, // Note: Consider making this repo public or adding a video demo link.
       featured: true,
       category: "Full Stack",
-      completionDate: "2024-03"
+      completionDate: "2024-03",
+      readme: null
     },
     {
       id: 2,
@@ -33,7 +34,8 @@ export const portfolioData = {
       githubUrl: "https://github.com/pgmgent-2425-datamanagement/custom-backoffice-pgm-stijwalr",
       featured: false,
       category: "Backend",
-      completionDate: "2024-03"
+      completionDate: "2024-03",
+      readme: null
     },
     {
       id: 3,
@@ -46,7 +48,8 @@ export const portfolioData = {
       githubUrl: "https://github.com/walravensJS/Live-chat-NodeJS",
       featured: true,
       category: "Full Stack",
-      completionDate: "2024-02"
+      completionDate: "2024-02",
+      readme: null
     },
     {
       id: 4,
@@ -59,7 +62,8 @@ export const portfolioData = {
       githubUrl: "https://github.com/pgmgent-pgm-4/pgm-platform-pgm-stijwalr",
       featured: false,
       category: "Frontend",
-      completionDate: "2024-01"
+      completionDate: "2024-01",
+      readme: null
     },
     {
       id: 5,
@@ -72,7 +76,8 @@ export const portfolioData = {
       githubUrl: null,
       featured: false,
       category: "Design",
-      completionDate: "2023-12"
+      completionDate: "2023-12",
+      readme: null
     },
     {
       id: 6,
@@ -85,7 +90,8 @@ export const portfolioData = {
       githubUrl: null, // Note: Consider adding design artifacts (Figma/Sketch link) here.
       featured: false,
       category: "Design",
-      completionDate: "2023-11"
+      completionDate: "2023-11",
+      readme: null
     },
     {
       id: 7,
@@ -99,7 +105,7 @@ export const portfolioData = {
       featured: true,
       category: "Full Stack",
       completionDate: "07-10-2025",
-      readme: null,
+      readme: '/readmes/custom-editor.md', // URL in public folder
     }
   ],
   projectCategories: [
