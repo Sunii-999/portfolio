@@ -91,14 +91,15 @@ export const portfolioData = {
       id: 7,
       title: "Custom Text Editor / Google Docs Clone",
       slug: createSlug("Custom Text Editor / Google Docs Clone"), // custom-text-editor-google-docs-clone
-      description: "A featured, collaborative rich text editor application, leveraging the power of Next.js and TypeScript to deliver a modern, performant, and reliable editing experience.",
+      description: "A featured, collaborative rich text editor application, leveraging the power of Next.js and TypeScript to deliver a modern, performant, and reliable editing experience. This was built with Next.js, TipTap, Radix UI, Convex, Clerk, Liveblock. Features include: A toolbar / rich text editing using TipTap. (bold, italic, underline, highlight, links, tables, images, tasks, headings, etc.).  ",
       image: "/img/projects/custom-editor.png",
       technologies: ["Next.js", "Tailwind CSS", "TypeScript", "React", "Collaboration Tools"],
       liveUrl: "https://custom-editor-tau.vercel.app/",
       githubUrl: "https://github.com/Sunii-999/custom-editor",
       featured: true,
-      category: "Full Stack", // Changed from "All" to a technical category for better filtering
-      completionDate: "2023-11"
+      category: "Full Stack",
+      completionDate: "07-10-2025",
+      readme: null,
     }
   ],
   projectCategories: [

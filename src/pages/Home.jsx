@@ -7,7 +7,9 @@ import { projects } from '../data/projects';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const featuredProjects = projects.filter(p => p.featured).slice(0, 3);
+  const fetchFeaturedProjects = projects.filter(p => p.featured).slice(0, 3);
+
+  const featuredProjects = fetchFeaturedProjects.slice().sort((a, b) => b.id - a.id);
 
   return (
     <div className="min-h-screen pt-16">

@@ -19,7 +19,6 @@ const Projects = () => {
     return categoryFiltered.slice().sort((a, b) => b.id - a.id);
     
   }, [selectedCategory]);
-  // console.log(filteredProjects); // Removed console.log
 
   return (
     <div className="min-h-screen pt-16">

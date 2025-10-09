@@ -7,18 +7,14 @@ import Button from '../components/ui/Button';
 import { projects } from '../data/projects'; 
 
 const ProjectDetail = () => {
-  // 🐛 FIX: Destructure 'slug' to match the route parameter /project/:slug
   const { slug } = useParams();
 
-  // Find the corresponding project using its slug
-  const project = projects.find(p => p.slug === slug); // 🐛 FIX: Use 'slug' here
+  const project = projects.find(p => p.slug === slug);
 
-  // Scroll to the top when navigating to a new project
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [slug]); // 🐛 FIX: Depend on 'slug'
+  }, [slug]);
 
-  // Handle case where project is not found
   if (!project) {
     return (
       <div className="min-h-screen pt-24 flex items-center justify-center">
@@ -126,25 +122,7 @@ const ProjectDetail = () => {
               )}
             </motion.div>
 
-            {/* Detailed Description/Features */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <h2 className="text-2xl font-medium text-google-gray-900 mb-4">
-                Project Overview
-              </h2>
-              <p className="text-lg text-google-gray-700 leading-relaxed">
-                {/* NOTE: You should replace this static text with a detailed description 
-                  field from your actual 'project' data object if available.
-                */}
-                This is the in-depth area for your project. You can describe the problem it solves, the architecture, the specific technical challenges you overcame, and future plans. This provides much more context than the short description on the main page.
-              </p>
-            </motion.div>
-
-            {/* Technologies Used (Already present in the Card but good to repeat here) */}
-            <motion.div
+              <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
