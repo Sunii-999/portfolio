@@ -33,7 +33,7 @@ Future plans include an **AI-powered summary editor** to help users instantly ge
 Clone the repository and install dependencies:  
 
 ```bash
-git clone https://github.com/your-username/custom-editor.git
+git clone https://github.com/Sunii-999/custom-editor.git
 cd custom-editor
 npm install
 ````
@@ -53,18 +53,4 @@ Run the development server:
 ```bash
 npm run dev
 ```
-
-The app will be available at [http://localhost:3000](http://localhost:3000).
-
----
-
-## 📜 Scripts
-
-| Command          | Description                      |
-| ---------------- | -------------------------------- |
-| `npm run dev`    | Start development server         |
-| `npm run build`  | Build production assets          |
-| `npm start`      | Start production server          |
-| `npm run lint`   | Run ESLint to check code quality |
-| `npx convex dev` | Start Convex backend (local dev) |
-
+[click here to see live demo](https://custom-editor-tau.vercel.app/).
