@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github, StarIcon } from 'lucide-react';
 import Button from '../components/ui/Button';
 // Assuming 'projects' is the same array you imported in Projects.jsx
 import { projects } from '../data/projects'; 
@@ -110,6 +110,14 @@ useEffect(() => {
                 </Button>
               </a>
             )}
+            {project.featured && (
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="featured">
+                  <StarIcon size={16} className="mr-2" />
+                  Featured post
+                </Button>
+              </a>
+            )}
             <span className="ml-auto px-3 py-1 bg-google-gray-100 text-google-gray-600 text-sm font-medium rounded-full">
               Category: {project.category}
             </span>
@@ -142,9 +150,6 @@ useEffect(() => {
     {readmeContent}
   </ReactMarkdown>
 )}
-
-
-
               <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

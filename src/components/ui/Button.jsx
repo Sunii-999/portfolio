@@ -14,6 +14,7 @@ const Button = ({
     primary: "bg-google-blue text-white hover:bg-blue-600 focus:ring-google-blue google-shadow",
     secondary: "bg-white text-google-gray-700 border border-google-gray-300 hover:bg-google-gray-50 focus:ring-google-gray-500 google-shadow",
     ghost: "text-google-gray-700 hover:bg-google-gray-100 focus:ring-google-gray-500",
+    featured: "bg-yellow-200 text-google-gray-700 border border-google-gray-300 hover:bg-yellow-500 focus:ring-google-gray-500 google-shadow",
   };
 
   const sizes = {
