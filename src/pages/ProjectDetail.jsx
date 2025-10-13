@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Github, StarIcon } from 'lucide-react';
+import { ArrowLeft, ConstructionIcon, ExternalLink, Github, StarIcon } from 'lucide-react';
 import Button from '../components/ui/Button';
 // Assuming 'projects' is the same array you imported in Projects.jsx
 import { projects } from '../data/projects'; 
@@ -118,9 +118,15 @@ useEffect(() => {
                 </Button>
               </a>
             )}
-            <span className="ml-auto px-3 py-1 bg-google-gray-100 text-google-gray-600 text-sm font-medium rounded-full">
-              Category: {project.category}
+            {project.currentlyWorking === false ? (
+              <span className="ml-auto px-3 py-1 bg-google-gray-100 text-google-gray-600 text-sm font-medium rounded-full">
+              {project.category}
             </span>
+            ) : (
+              <span className="ml-auto px-3 py-1 bg-green-100 text-green-600 text-sm font-medium rounded-full">
+              {project.category}
+            </span>
+            )}
           </motion.div>
 
           {/* Main Content (Image and Details) */}
@@ -132,7 +138,7 @@ useEffect(() => {
               transition={{ delay: 0.3 }}
               className="rounded-xl overflow-hidden google-shadow-xl border border-google-gray-100"
             >
-              {project.image ? (
+              {project.currentlyWorking === false? (
                 <img
                   src={project.image}
                   alt={project.title}
@@ -140,7 +146,9 @@ useEffect(() => {
                 />
               ) : (
                 <div className="aspect-video w-full flex items-center justify-center bg-google-gray-200 text-google-gray-400 p-8">
-                  <span className="text-lg">No primary visual available</span>
+                  <ConstructionIcon size={46} /> {"  "}
+                  <span className="text-lg">Project is a work in progress</span>
+                   {"  "} <ConstructionIcon size={46} />
                 </div>
               )}
             </motion.div>

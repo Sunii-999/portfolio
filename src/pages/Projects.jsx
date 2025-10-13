@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Filter } from 'lucide-react';
+import { ExternalLink, Github, Filter, FigmaIcon, } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { projects, projectCategories } from '../data/projects';
@@ -12,8 +12,8 @@ const Projects = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const filteredProjects = useMemo(() => {
-    const categoryFiltered = selectedCategory === 'All' 
-      ? projects 
+    const categoryFiltered = selectedCategory === 'All'
+      ? projects
       : projects.filter(project => project.category === selectedCategory);
     return categoryFiltered.slice().sort((a, b) => b.id - a.id);
   }, [selectedCategory]);
@@ -53,7 +53,7 @@ const Projects = () => {
             </p>
           </motion.div>
 
-          {/* Filters */}
+          {/* Filters (omitted for brevity, no changes here) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ const Projects = () => {
               ))}
             </div>
 
-            {/* Mobile Filter Dropdown */}
+            {/* Mobile Filter Dropdown (omitted for brevity, no changes here) */}
             <div className="md:hidden">
               <Button
                 variant="secondary"
@@ -136,7 +136,7 @@ const Projects = () => {
                   <Link to={`/project/${project.slug}`} className="block h-full">
                     <Card className="h-full group">
                       <div className="aspect-video bg-google-gray-200 rounded-lg mb-4 overflow-hidden">
-                        {project.image ? (
+                        {project.currentlyWorking === false ? (
                           <img
                             src={project.image}
                             alt={project.title}
@@ -144,19 +144,30 @@ const Projects = () => {
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-google-gray-400">
-                            <span className="text-sm">No image available</span>
+                            <span className="text-sm">Work in progress</span>
                           </div>
                         )}
                       </div>
 
                       <div className="flex-1 flex flex-col">
                         <div className="flex items-start justify-between mb-2">
-                          <h3 className="text-lg font-medium text-google-gray-900 group-hover:text-google-blue transition-colors">
-                            {project.title}
-                          </h3>
-                          <span className="px-2 py-1 bg-google-gray-100 text-google-gray-600 text-xs rounded-full whitespace-nowrap ml-2">
-                            {project.category}
-                          </span>
+                          <div className="flex items-center"> {/* New container for title and WIP tag */}
+                            <h3 className="text-lg font-medium text-google-gray-900 group-hover:text-google-blue transition-colors mr-2">
+                              {project.title}
+                            </h3>
+                            {project.currentlyWorking === false ? (
+                              <span className="px-2 py-1 bg-google-gray-100 text-google-gray-600 text-xs rounded-full whitespace-nowrap ml-2">
+                                {project.category}
+                              </span>
+                            ) : (
+                              <span className="px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full whitespace-nowrap ml-2">
+                                WIP
+                              </span>
+                            )}
+                            
+                          </div>
+                          
+                          
                         </div>
 
                         <p className="text-google-gray-600 mb-4 flex-1">{project.description}</p>
@@ -201,6 +212,27 @@ const Projects = () => {
                               </Button>
                             </a>
                           )}
+                          {project.figmaUrl && (
+                            <a
+                              href={project.figmaUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Button
+                                variant="secondary"
+                                size="sm"
+                                className="w-full text-white bg-slate-950 hover:text-white hover:bg-slate-800"
+                              >
+                                <FigmaIcon
+                                  size={14}
+                                  className="mr-1"
+                                />
+                                Figma
+                              </Button>
+                            </a>
+                          )}
                         </div>
                       </div>
                     </Card>
@@ -210,7 +242,7 @@ const Projects = () => {
             </AnimatePresence>
           </motion.div>
 
-          {/* Empty State */}
+          {/* Empty State (omitted for brevity, no changes here) */}
           {filteredProjects.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}

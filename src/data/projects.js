@@ -21,7 +21,9 @@ export const portfolioData = {
       featured: true,
       category: "Full Stack",
       completionDate: "2024-03",
-      readme: null
+      readme: null,
+      figmaUrl: null, // New field added
+      currentlyWorking: false, // New field added
     },
     {
       id: 2,
@@ -35,7 +37,9 @@ export const portfolioData = {
       featured: false,
       category: "Backend",
       completionDate: "2024-03",
-      readme: null
+      readme: null,
+      figmaUrl: null, // New field added
+      currentlyWorking: false, // New field added
     },
     {
       id: 3,
@@ -49,7 +53,9 @@ export const portfolioData = {
       featured: true,
       category: "Full Stack",
       completionDate: "2024-02",
-      readme: null
+      readme: null,
+      figmaUrl: null, // New field added
+      currentlyWorking: false, // New field added
     },
     {
       id: 4,
@@ -63,7 +69,9 @@ export const portfolioData = {
       featured: false,
       category: "Frontend",
       completionDate: "2024-01",
-      readme: null
+      readme: null,
+      figmaUrl: null, // Example Figma link
+      currentlyWorking: false, // New field added
     },
     {
       id: 5,
@@ -77,7 +85,9 @@ export const portfolioData = {
       featured: false,
       category: "Design",
       completionDate: "2023-12",
-      readme: null
+      readme: null,
+      figmaUrl: null, // New field added
+      currentlyWorking: false, // New field added
     },
     {
       id: 6,
@@ -87,11 +97,13 @@ export const portfolioData = {
       image: "/img/projects/cms-1.jpg",
       technologies: ["Web Design", "UX/UI Design", "Information Architecture"],
       liveUrl: null,
-      githubUrl: null, // Note: Consider adding design artifacts (Figma/Sketch link) here.
+      githubUrl: null,
       featured: false,
       category: "Design",
       completionDate: "2023-11",
-      readme: null
+      readme: null,
+      figmaUrl: null,
+      currentlyWorking: false, // New field added
     },
     {
       id: 7,
@@ -106,6 +118,24 @@ export const portfolioData = {
       category: "Full Stack",
       completionDate: "07-10-2025",
       readme: '/readmes/custom-editor.md', // URL in public folder
+      figmaUrl: null, // New field added
+      currentlyWorking: false, // New field added
+    },
+    {
+      id: 8,
+      title: "TCG Collector",
+      slug: createSlug("TCG Collector"),
+      description: "Work in progress.",
+      image: "/img/projects/portfolio-v2.png",
+      technologies: ["Next.js", "React", "Tailwind CSS", "Design", "Framer Motion"],
+      liveUrl: null,
+      githubUrl: null,
+      featured: false,
+      category: "WIP",
+      completionDate: null,
+      readme: null,
+      figmaUrl: "https://www.figma.com/design/fZ42BNFdcDPkpIUaGQn9sC/TCG-Project?node-id=0-1&t=yJZL2hvKGfa1wjpI-1",
+      currentlyWorking: true, // Example of a project currently in progress
     }
   ],
   projectCategories: [
@@ -113,7 +143,8 @@ export const portfolioData = {
     "Full Stack",
     "Frontend",
     "Backend",
-    "Design"
+    "Design",
+    "WIP",
   ]
 };
 
