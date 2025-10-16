@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ConstructionIcon, ExternalLink, Github, StarIcon } from 'lucide-react';
 import Button from '../components/ui/Button';
-// Assuming 'projects' is the same array you imported in Projects.jsx
 import { projects } from '../data/projects'; 
 
 import ReactMarkdown from 'react-markdown';
