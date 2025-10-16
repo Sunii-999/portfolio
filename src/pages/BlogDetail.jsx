@@ -1,70 +1,94 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Menu, X, Sun, Moon } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { blog } from '../data/blogs';
 
-const dayContexts = {
-  python: require.context('../../public/readmes/blog/python', false, /\.md$/),
-};
-
 const BlogDetail = () => {
   const { slug } = useParams();
   const blogPost = blog.find((b) => b.slug === slug);
-  const [mainContent, setMainContent] = useState('');
-  const [dayContents, setDayContents] = useState([]);
+  const [content, setContent] = useState('');
+  const [toc, setToc] = useState([]);
+  const [isReaderMode, setIsReaderMode] = useState(false);
+  const [isTocOpen, setIsTocOpen] = useState(false);
 
   useEffect(() => {
     if (!blogPost) return;
 
-    // Load main README
     fetch(blogPost.readme)
       .then((res) => res.text())
-      .then(setMainContent);
+      .then((text) => {
+        setContent(text);
 
-    // Load day markdown files if folder is defined
-    if (blogPost.folder && dayContexts[blogPost.folder]) {
-      const context = dayContexts[blogPost.folder];
-      const loadDays = async () => {
-        const days = await Promise.all(
-          context.keys().map(async (key) => {
-            const fileUrl = context(key);
-            const res = await fetch(fileUrl);
-            const text = await res.text();
+        // Extract ## and ### headings
+        const headings = text
+          .split('\n')
+          .filter((line) => /^(##|###)\s+/.test(line))
+          .map((line) => {
+            const level = line.startsWith('###') ? 3 : 2;
+            const title = line.replace(/^###*\s+/, '').trim();
+            const id = title
+              .toLowerCase()
+              .replace(/[^\w\s-]/g, '')
+              .replace(/\s+/g, '-');
+            return { id, title, level };
+          });
 
-            const filename = key.replace('./', '').replace('.md', '');
-            return {
-              title: filename.replace(/([a-z])([A-Z])/g, '$1 $2'),
-              content: text,
-            };
-          })
-        );
-        days.sort((a, b) => a.title.localeCompare(b.title));
-        setDayContents(days);
-      };
-      loadDays();
-    }
+        setToc(headings);
+      });
   }, [blogPost]);
 
-  if (!blogPost) return <div className="text-center py-20 text-gray-500">Blog not found</div>;
+  if (!blogPost)
+    return <div className="text-center py-20 text-gray-500">Blog not found</div>;
 
   return (
-    <div className="min-h-screen pt-20 flex flex-col lg:flex-row bg-gray-50">
+    <div
+  className={`min-h-screen pt-20 flex flex-col lg:flex-row transition-colors duration-300 w-full overflow-x-hidden ${
+    isReaderMode ? 'bg-[#1a1a1a] text-gray-200' : 'bg-gray-50 text-gray-800'
+  }`}
+>
+
+      {/* Mobile TOC Toggle */}
+      <div className="lg:hidden flex items-center justify-between px-6 py-3 border-b border-gray-200 ">
+        <button
+          onClick={() => setIsTocOpen(!isTocOpen)}
+          className="flex items-center gap-2 text-sm font-medium"
+        >
+          {isTocOpen ? <X size={18} /> : <Menu size={18} />}
+          Table of Contents
+        </button>
+
+        <button
+          onClick={() => setIsReaderMode(!isReaderMode)}
+          className="flex items-center gap-2 text-sm"
+        >
+          {isReaderMode ? <Sun size={18} /> : <Moon size={18} />}
+          Reader Mode
+        </button>
+      </div>
+
       {/* Sidebar */}
-      {dayContents.length > 0 && (
-        <aside className="hidden lg:block w-72 border-r border-gray-200 bg-white p-6 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto shadow-sm">
-          <h2 className="text-xl font-semibold mb-4">Days</h2>
-          <ul className="space-y-3">
-            {dayContents.map((day, i) => (
-              <li key={i}>
+      {(toc.length > 0 && (isTocOpen || window.innerWidth >= 1024)) && (
+        <aside
+          className={`${
+            isReaderMode
+              ? 'bg-[#222] border-gray-700 text-gray-300'
+              : 'bg-white border-gray-200 text-gray-700'
+          } w-full lg:w-72 border-r p-6 lg:sticky top-24 overflow-y-auto shadow-sm rounded-lg h-fit shadow-md`}
+        >
+          <h2 className="text-xl font-semibold mb-4">Table of Contents</h2>
+          <ul className="space-y-2">
+            {toc.map((item, i) => (
+              <li key={i} className={`${item.level === 3 ? 'ml-4 text-sm' : ''}`}>
                 <a
-                  href={`#day-${i + 1}`}
-                  className="block text-gray-600 hover:text-google-blue transition"
+                  href={`#${item.id}`}
+                  className="block hover:text-google-blue transition"
+                  onClick={() => setIsTocOpen(false)}
                 >
-                  {day.title}
+                  {item.title}
                 </a>
               </li>
             ))}
@@ -73,75 +97,96 @@ const BlogDetail = () => {
       )}
 
       {/* Main content */}
-      <main className="flex-1 px-6 sm:px-10 lg:px-16 py-12 max-w-4xl mx-auto bg-white shadow-md rounded-2xl">
-        <Link
-          to="/blog"
-          className="inline-flex items-center text-google-blue hover:underline mb-8"
-        >
-          <ArrowLeft size={18} className="mr-2" />
-          <span className="font-medium">Back to All Posts</span>
-        </Link>
+      <main
+  className={`flex-1 w-full px-4 sm:px-6 lg:px-16 py-10 max-w-full lg:max-w-4xl mx-auto rounded-2xl transition-colors ${
+    isReaderMode ? 'bg-[#1e1e1e]' : 'bg-white shadow-md'
+  }`}
+>
 
-        {/* Markdown Renderer */}
-        <article className="prose prose-lg prose-slate max-w-none mb-16 leading-relaxed">
+        <div className="flex justify-between items-center mb-8">
+          <Link
+            to="/blog"
+            className={`inline-flex items-center hover:underline ${
+              isReaderMode ? 'text-blue-400' : 'text-google-blue'
+            }`}
+          >
+            <ArrowLeft size={18} className="mr-2" />
+            <span className="font-medium">Back to All Posts</span>
+          </Link>
+
+          {/* Desktop Reader Mode toggle */}
+          <button
+            onClick={() => setIsReaderMode(!isReaderMode)}
+            className="hidden lg:flex items-center gap-2 text-sm font-medium"
+          >
+            {isReaderMode ? <Sun size={18} /> : <Moon size={18} />}
+            {isReaderMode ? 'Light Mode' : 'Reader Mode'}
+          </button>
+        </div>
+
+        {/* Markdown content */}
+        <article
+  className={`prose prose-lg max-w-full sm:max-w-none leading-relaxed transition-colors break-words ${
+    isReaderMode
+      ? 'prose-invert prose-headings:text-gray-100 prose-p:text-gray-300 prose-a:text-blue-400'
+      : 'prose-slate'
+  }`}
+>
+
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-              code({ node, inline, className, children, ...props }) {
+              h2: ({ node, children, ...props }) => {
+                const text = String(children)
+                  .toLowerCase()
+                  .replace(/[^\w\s-]/g, '')
+                  .replace(/\s+/g, '-');
+                return (
+                  <h2 id={text} className="scroll-mt-24" {...props}>
+                    {children}
+                  </h2>
+                );
+              },
+              h3: ({ node, children, ...props }) => {
+                const text = String(children)
+                  .toLowerCase()
+                  .replace(/[^\w\s-]/g, '')
+                  .replace(/\s+/g, '-');
+                return (
+                  <h3 id={text} className="scroll-mt-24" {...props}>
+                    {children}
+                  </h3>
+                );
+              },
+              code({ inline, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || '');
                 return !inline && match ? (
                   <SyntaxHighlighter
                     style={oneDark}
                     language={match[1]}
                     PreTag="div"
-                    className="rounded-lg overflow-hidden"
+  className="rounded-lg overflow-x-auto"
                     {...props}
                   >
                     {String(children).replace(/\n$/, '')}
                   </SyntaxHighlighter>
                 ) : (
-                  <code className="bg-gray-100 text-sm px-1 py-0.5 rounded" {...props}>
-                    {children}
-                  </code>
+                  <code
+  className={`text-sm px-1 py-0.5 rounded overflow-x-auto block ${
+    isReaderMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-100'
+  }`}
+  {...props}
+>
+  {children}
+</code>
+
                 );
               },
             }}
           >
-            {mainContent}
+            {content}
           </ReactMarkdown>
         </article>
-
-        {dayContents.map((day, i) => (
-          <section key={i} id={`day-${i + 1}`} className="mb-20">
-            <article className="prose prose-lg prose-slate max-w-none leading-relaxed">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  code({ node, inline, className, children, ...props }) {
-                    const match = /language-(\w+)/.exec(className || '');
-                    return !inline && match ? (
-                      <SyntaxHighlighter
-                        style={oneDark}
-                        language={match[1]}
-                        PreTag="div"
-                        className="rounded-lg overflow-hidden"
-                        {...props}
-                      >
-                        {String(children).replace(/\n$/, '')}
-                      </SyntaxHighlighter>
-                    ) : (
-                      <code className="bg-gray-100 text-sm px-1 py-0.5 rounded" {...props}>
-                        {children}
-                      </code>
-                    );
-                  },
-                }}
-              >
-                {day.content}
-              </ReactMarkdown>
-            </article>
-          </section>
-        ))}
       </main>
     </div>
   );

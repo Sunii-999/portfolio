@@ -21,23 +21,8 @@ export const blogData = {
       category: "Coding",
       completionDate: "16/10/2025",
       readme: "/readmes/blog/30-python.md",
-      folder: "python"  // 👈 NEW: folder for day files
 
     },
-    {
-      id: 2,
-      title: "30 Days of testing",
-      slug: createSlug("30 Days of testing"), 
-      description: "This is my first ever blog post to my portfolio where i will be updating anyone thats interested in my career growth. This blog post will be about my journey of learning python in 30 days. I will be sharing my progress, challenges and achievements throughout the month.",
-      image: "/img/projects/dclone.png",
-      liveUrl: null,
-      githubUrl: null, // Note: Consider making this repo public or adding a video demo link.
-      featured: true,
-      category: "Coding",
-      completionDate: "16/10/2025",
-      readme: "/readmes/blog/30-python.md",
-      folder: null // 👈 NEW: folder for day files
-    }
   ],
   blogCategories: [
     "Carreer",
