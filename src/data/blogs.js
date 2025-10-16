@@ -14,7 +14,7 @@ export const blogData = {
       title: "30 Days of Python",
       slug: createSlug("30 Days of Python"), 
       description: "This is my first ever blog post to my portfolio where i will be updating anyone thats interested in my career growth. This blog post will be about my journey of learning python in 30 days. I will be sharing my progress, challenges and achievements throughout the month.",
-      image: "/img/projects/dclone.png",
+      image: "/img/blog/python/header.png",
       liveUrl: null,
       githubUrl: null, // Note: Consider making this repo public or adding a video demo link.
       featured: true,
