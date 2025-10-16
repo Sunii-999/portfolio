@@ -41,7 +41,8 @@ export const profile = {
     ],
   
     social: {
-      github: "https://github.com/walravensJS",
+      github: "https://github.com/sunii-999",
+      oldGithub: "https://github.com/walravensJS",
       linkedin: "https://www.linkedin.com/in/stijn-walravens/",
       email: "stijnjoeywalravens@gmail.com"
     }

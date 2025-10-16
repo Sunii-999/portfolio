@@ -73,28 +73,32 @@ const Home = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex justify-center space-x-6"
-            >
-              {[
-                { icon: Github, url: profile.social.github, label: 'GitHub' },
-                { icon: Linkedin, url: profile.social.linkedin, label: 'LinkedIn' },
-                { icon: Mail, url: `mailto:${profile.social.email}`, label: 'Email' }
-              ].map(({ icon: Icon, url, label }) => (
-                <a
-                  key={label}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-google-gray-100 hover:bg-google-gray-200 transition-colors duration-200"
-                  aria-label={label}
-                >
-                  <Icon size={24} className="text-google-gray-700" />
-                </a>
-              ))}
-            </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.3 }}
+  className="flex justify-center space-x-6"
+>
+  {[
+    { icon: Github, url: profile.social.oldGithub, label: 'Old GitHub' },
+    { icon: Github, url: profile.social.github, label: 'New GitHub' },
+    { icon: Linkedin, url: profile.social.linkedin, label: 'LinkedIn' },
+    { icon: Mail, url: `mailto:${profile.social.email}`, label: 'Email' },
+  ].map(({ icon: Icon, url, label }) => (
+    <div key={label} className="flex flex-col items-center">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="p-3 rounded-full bg-google-gray-100 hover:bg-google-gray-200 transition-colors duration-200"
+        aria-label={label}
+      >
+        <Icon size={24} className="text-google-gray-700" />
+      </a>
+      <span className="text-xs text-google-gray-600 mt-2">{label}</span>
+    </div>
+  ))}
+</motion.div>
+
           </div>
         </div>
       </section>
