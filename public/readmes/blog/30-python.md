@@ -13,6 +13,8 @@ By completing this challenge, I aim to build strong coding habits, improve probl
 
 Following the infamous [30-days-of-python](https://github.com/Asabeneh/30-Days-Of-Python/tree/master) repository
 
+View my code [here](https://github.com/Sunii-999/30-day_python/tree/main)
+
 ---
 
 ## 🐍 Day 1 - Operations, Types

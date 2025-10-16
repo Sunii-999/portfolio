@@ -16,7 +16,7 @@ export const blogData = {
       description: "This is my first ever blog post to my portfolio where i will be updating anyone thats interested in my career growth. This blog post will be about my journey of learning python in 30 days. I will be sharing my progress, challenges and achievements throughout the month.",
       image: "/img/blog/python/header.png",
       liveUrl: null,
-      githubUrl: null, // Note: Consider making this repo public or adding a video demo link.
+      githubUrl: "https://github.com/Sunii-999/30-day_python/tree/main", // Note: Consider making this repo public or adding a video demo link.
       featured: true,
       category: "Coding",
       completionDate: "16/10/2025",
