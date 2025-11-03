@@ -23,6 +23,20 @@ export const blogData = {
       readme: "/readmes/blog/30-python.md",
 
     },
+    {
+      id: 2,
+      title: "The Power of the Senses in Design and Experience",
+      slug: createSlug("The Power of the Senses in Design and Experience"), 
+      description: "The power of the senses in design and experience is topic that i find immensely interesting and it explores how our senses influence our perception and interaction with the world around us. In this blog post, I dive into the role of the senses in design and experience, and how they can be leveraged to create more engaging and immersive experiences.",
+      image: "/img/blog/sense/header.png",
+      liveUrl: null,
+      githubUrl: null,
+      featured: true,
+      category: "Design",
+      completionDate: "03/11/2025",
+      readme: "/readmes/blog/the-power-of-sense.md",
+
+    },
   ],
   blogCategories: [
     "Carreer",
@@ -31,6 +45,5 @@ export const blogData = {
   ]
 };
 
-// Original export format (if you must keep it exactly as-is)
 export const blog = blogData.blogs;
 export const blogCategories = blogData.blogCategories;
