@@ -100,7 +100,7 @@ const About = () => {
             className="mb-6 w-32 h-32 rounded-full overflow-hidden google-shadow-lg"
           >
             <img 
-              src="https://media.licdn.com/dms/image/v2/D4E03AQGK4JmSwU-ySw/profile-displayphoto-shrink_800_800/B4EZdBhlDEHcAc-/0/1749151011522?e=1762992000&v=beta&t=NIZLm6dqE5XyQCUy4sAzuZKLr94weObR6QRVT69uH2E" 
+              src="https://media.licdn.com/dms/image/v2/D4E03AQFfJps-zJTf7A/profile-displayphoto-crop_800_800/B4EZreusBMHUAI-/0/1764673373408?e=1769040000&v=beta&t=mRVfuSDOGKKRn8sY3hTB2X7BKA2q353j0l-FTqltgWU" 
               alt="Profile" 
               className="w-full h-full object-cover" 
             />
