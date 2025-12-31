@@ -16,7 +16,7 @@ const Card = ({ children, className }) => (
 const myProfile = {
   name: "Stijn Walravens",
   title: "Full-stack Developer | Designer",
-  subtitle: "Full-stack developer with a creative eye and detail-oriented mindset, eager to learn and create.",
+  subtitle: "Full-stack developer with a degree in programming and graphic design",
   location: "Roosdaal, Belgium",
   email: "stijnjoeywalravens@gmail.com",
   skills: [
