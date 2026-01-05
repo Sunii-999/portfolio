@@ -3,16 +3,12 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Code, ArrowRight } from 'lucide-react';
 
-// Card component
 const Card = ({ children, className }) => (
   <div className={`rounded-xl bg-white google-shadow p-6 ${className}`}>
     {children}
   </div>
 );
 
-// Custom button
-
-// Profile data
 const myProfile = {
   name: "Stijn Walravens",
   title: "Full-stack Developer | Designer",
