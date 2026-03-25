@@ -1,54 +1,36 @@
-# 👋 Hi there, I'm Stijn Walravens a.k.a. Sunii
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## 🎨 Full Stack Developer & Graphic Designer
-### 🇧🇪 Belgian / Native American
+## Getting Started
 
----
+First, run the development server:
 
-## 💼 Who am I?
-I'm a full stack developer who enjoys coding projects that have a personal meaning or software that can help someone. I use tools like **React.js** / **Next.js** to build smooth and user-friendly digital experiences. I also freelance as a developer and graphic designer.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-When I’m not at the computer, you’ll probably find me gaming, enjoying a movie marathon, or getting lost in a good book. Whether it’s pixels or code, I love crafting things that make people smile.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## ✨ Experience
-### 💻 Zoomers
-Full Stack Developer Internship (April 2025 – June 2025)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
----
+## Learn More
 
-## 🛠️ Tech & Tools
-**Web Development**  
+To learn more about Next.js, take a look at the following resources:
 
-- Next.js  
-- React.js  
-- Node.js  
-- Express.js  
-- PHP  
-- Strapi  
-- CraftCMS  
-- Eleventy  
-- Tailwind CSS  
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
----
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## 🎓 Education
-### Technische Instituut Don Bosco Halle
-- 📘 Grafische Multimedia (2013 – 2019)  
-- 💻 Interactive Media (2019 – 2020)
+## Deploy on Vercel
 
-### Artevelde Hogeschool
-- 🧠 Programming (2023 – Present)
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
----
-
-## 📫 Find me here!
-- 📸 Instagram: [@walravens.js](https://www.instagram.com/walravens.js)  
-- 💼 LinkedIn: [Stijn Walravens](https://www.linkedin.com)  
-- 🌐 [Portfolio]([https://www.linkedin.com](https://portfolio-swart-one-35.vercel.app/))
-
----
-
-## ⭐️ Fun Fact
-I started being a creative 13 years ago!
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
