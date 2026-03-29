@@ -1,4 +1,4 @@
-import { getIcon, IconName } from "@/lib/Icons";
+import { getIcon, IconName } from "@/components/Icon/Icons";
 
 type IconProps = {
   name: IconName;

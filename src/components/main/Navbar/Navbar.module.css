@@ -1,7 +1,55 @@
 .navbarContainer {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: var(--navbar);
+    border-bottom: 1px solid black;
+
+}
+
+.navbarItemsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: black;
+}
+
+.navbarItems {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    list-style: none; 
+    margin: 0;
+    align-items: center;
+}
+
+.navbarItem {
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none; 
+}
+
+.navSection{
+    flex: 1;
+}
+
+.navbarIconsContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: end;
+    align-items: center;
+
+}
+
+.myName{
+    flex-direction: row;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+
 }

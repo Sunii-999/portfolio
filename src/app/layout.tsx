@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Google_Sans, Google_Sans_Code, Roboto_Condensed} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/main/Navbar/Navbar";
 import "@/config/colors.css";
 import "@/config/fonts.css";
-import { Icon } from "@/components/Icon/Icon";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const googleFont = Google_Sans({
+  variable: "--font-google-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const googleCodeFont = Google_Sans_Code({
+  variable: "--font-google-code",
+  subsets: ["latin"],
+});
+
+const robotCondensed = Roboto_Condensed({
+  variable: "--font-roboto",
   subsets: ["latin"],
 });
 
@@ -27,9 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>
-          <Icon name="logo" width="48px" height="48px"/>
+<html lang="en" className={`${googleFont.variable} ${googleCodeFont.variable} ${robotCondensed.variable}`}>   
+  <body>
           <Navbar/>
         <main>
         {children}
