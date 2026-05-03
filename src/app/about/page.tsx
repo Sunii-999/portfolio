@@ -154,6 +154,12 @@ export default function AboutPage() {
                   </a>
                 </p>
                 <p className="reveal-item flex justify-between">
+                  <span className="text-zinc-400">Medium</span>
+                  <a href={profile.contacts.medium} className="hover:underline">
+                    @sunii-999
+                  </a>
+                </p>
+                <p className="reveal-item flex justify-between">
                   <span className="text-zinc-400">Phone</span>
                   <span>{profile.contacts.phone}</span>
                 </p>
