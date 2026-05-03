@@ -158,7 +158,7 @@ export const portfolioData: PortfolioData = {
       title: "Interior Design / Interior Architecture Portfolio",
       slug: createSlug(" Interior Architecture Portfolio"),
       description: "Working with Sunii on my portfolio was a game changer. The website looks incredibly clean and professional, and it really reflects my style as a designer. Everything feels smooth and easy to navigate, which made a big difference when sharing it with recruiters. I’m currently a second-year student in Berlin studying Interior Design and Interior Architecture, and thanks to this portfolio, I actually secured an internship in JAPAN TOKYO.",
-      image: "/img/projects/portfolio-v2.png",
+      image: "/img/projects/interior.png",
       technologies: ["Next.js", "React", "Tailwind CSS", "Design", "Framer Motion"],
       liveUrl: "https://starportfolio-seven.vercel.app/",
       githubUrl: "https://github.com/Sunii-999/starportfolio",
