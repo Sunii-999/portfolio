@@ -60,13 +60,12 @@ export default function FeaturedProjects() {
           </div>
           <div className="hidden max-w-xs pb-4 text-right text-gray-400 md:block">
             <p>
-              A collection of full-stack applications and digital experiences
-              built with precision.
+              An archive of my personal work. (professional projects are not
+              shown here)
             </p>
           </div>
         </div>
 
-        {/* Horizontal Scroll Container */}
         <div
           ref={sectionRef}
           className="flex h-[70vh] flex-nowrap items-center gap-10 px-10 pb-20"
@@ -77,7 +76,6 @@ export default function FeaturedProjects() {
               href={`/projects/${project.slug}`}
               className="group relative h-full w-[80vw] shrink-0 overflow-hidden rounded-sm bg-zinc-900 md:w-[45vw] lg:w-[35vw]"
             >
-              {/* Project Image */}
               <div className="relative h-full w-full scale-105 grayscale transition-all duration-700 ease-in-out group-hover:scale-100 group-hover:grayscale-0">
                 <Image
                   src={project.image}
@@ -85,11 +83,9 @@ export default function FeaturedProjects() {
                   fill
                   className="object-cover opacity-80 transition-opacity group-hover:opacity-100"
                 />
-                {/* Overlay for better text readability */}
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-60" />
               </div>
 
-              {/* Project Info */}
               <div className="absolute bottom-0 left-0 w-full p-8">
                 <div className="mb-4 flex flex-wrap gap-2">
                   {project.technologies.slice(0, 3).map((tech) => (

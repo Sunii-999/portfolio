@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-// Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 export default function References() {
@@ -19,16 +18,14 @@ export default function References() {
         sectionRef.current,
         { x: 0 },
         {
-          // Moves the section to the left by its total width minus the screen width
           x: () => -(sectionRef.current!.scrollWidth - window.innerWidth),
           ease: "none",
           scrollTrigger: {
             trigger: triggerRef.current,
             pin: true,
-            scrub: 1, // Smoothness of the scroll (higher = slower/smoother)
-            // Adjust 'end' to control how long the user scrolls vertically
-            // to finish the horizontal movement
-            end: () => `+=${sectionRef.current!.offsetWidth}`,
+            scrub: 1,
+            end: () =>
+              `+=${sectionRef.current!.scrollWidth - window.innerWidth}`,
             invalidateOnRefresh: true,
           },
         }
@@ -43,7 +40,6 @@ export default function References() {
 
   return (
     <section className="overflow-hidden bg-white">
-      {/* The Wrapper that triggers the scroll */}
       <div ref={triggerRef}>
         <div className="px-10 pt-20">
           <h1 className="mb-10 text-4xl font-bold tracking-tighter uppercase">
@@ -51,7 +47,6 @@ export default function References() {
           </h1>
         </div>
 
-        {/* The actual horizontal container */}
         <div
           ref={sectionRef}
           className="flex h-[60vh] flex-nowrap gap-10 px-10"
