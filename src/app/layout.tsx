@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Sunii",
   },
   description:
-    "Stijn Walravens (Sunii) is a Full-Stack Developer based in Belgium specializing in Next.js, React, TypeScript, and Rust. Building high-performance web applications and scalable software.",
+    "Stijn Walravens (Sunii) is a Softwarte Engineer based in Belgium specializing in Next.js, React (& Native), TypeScript, and Rust. Building scalable software applications.",
 
   keywords: [
     "Stijn Walravens",
