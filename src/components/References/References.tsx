@@ -39,7 +39,7 @@ export default function References() {
   );
 
   return (
-    <section className="overflow-hidden bg-white">
+    <section className="overflow-hidden bg-white mb-10">
       <div ref={triggerRef}>
         <div className="px-10 pt-20">
           <h1 className="mb-10 text-4xl font-bold tracking-tighter uppercase">
