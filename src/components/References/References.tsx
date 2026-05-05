@@ -49,7 +49,7 @@ export default function References() {
 
         <div
           ref={sectionRef}
-          className="flex h-[60vh] flex-nowrap gap-10 px-10"
+          className="flex h-[40vh] flex-nowrap gap-10 px-10"
         >
           {references.map((ref) => (
             <div
