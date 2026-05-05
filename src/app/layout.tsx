@@ -30,12 +30,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stijn Walravens – Full-Stack Developer",
     description:
-      "Portfolio of Stijn Walravens (Sunii), building modern web applications with Next.js, React, and Rust.",
+      "Portfolio of Stijn Walravens (Sunii), software engineer using React, React Native, NextJs and Rust",
     url: "https://www.sunii.me",
     siteName: "Sunii Portfolio",
     images: [
       {
-        url: "/og-image.png",
+        url: "/favicon-32x32.png",
         width: 1200,
         height: 630,
         alt: "Sunii Portfolio",
@@ -47,10 +47,10 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Stijn Walravens – Full-Stack Developer",
+    title: "Stijn Walravens – Software Engineer",
     description:
-      "Full-stack developer specializing in Next.js, React, TypeScript, and Rust.",
-    images: ["/og-image.png"],
+      "Software developer specializing in Next.js, React, TypeScript, and Rust.",
+    images: ["/favicon-32x32.png"],
   },
 
   robots: {
