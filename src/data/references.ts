@@ -21,6 +21,6 @@ export const references = [
       "Student Interior Design and Interior Architecture | Whitecliffe University Berlin School of applied sciences",
     product: "Portfolio website",
     review:
-      "This portfolio turned out way better than I expected. It looks super clean and actually feels like something a real designer would have, not just a student project. The vibe is exactly what i wanted, everything just flows nicely, which made it super easy to send to recruiters.I literally ended up landing an internship thanks to this LOCATED IN JAPAN!!!!!! Got multiple compliments on the site too.",
+  "This portfolio turned out far better than expected. Clean, professional, and exactly the vibe I wanted. It made sharing with recruiters easy, and I even landed an internship in Japan thanks to it. Got lots of compliments too.",
   },
 ];
